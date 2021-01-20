@@ -32,8 +32,8 @@ namespace Serverilista
                 }
                 // Tulosta jokaisesta serveristä haluttavat tiedot
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"{osa.hostname}:\nModi: {osa.gametype}\nKartta: {osa.map}\n" +
-                    $"Players: {osa.numplayers}/{osa.maxplayers}\nBots: {osa.bots}\n");
+                Console.WriteLine($"\n{osa.hostname}:\nModi: {osa.gametype}\nKartta: {osa.map}\n" +
+                    $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\nBotteja: {osa.bots}\n");
                 
                 // Tulosta json syvemmän nestauksen tietoja, tässä tapauksessa pelaajat
                 foreach(var plr in osa.players)
@@ -53,8 +53,9 @@ namespace Serverilista
                         .Replace("font color=\"#00FFFF\"&gt;", "");
 
                     Console.ResetColor();
-                    Console.WriteLine($"Pelaajan nimi: {plr.name}\nPisteet: {plr.score}\nTiimi: {plr.team}\n" +
-                        $"Latenssi: {plr.ping}\n");
+                    /*Console.WriteLine($"Pelaajan nimi: {plr.name}\nPisteet: {plr.score}\nTiimi: {plr.team}\n" +
+                        $"Latenssi: {plr.ping}\n");*/
+                    Console.WriteLine($"Pelaajan nimi: {plr.name}\nLatenssi: {plr.ping}");
                 }
             }
         }
