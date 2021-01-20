@@ -40,9 +40,11 @@ namespace Serverilista
                 // Tulosta json syvemmän nestauksen tietoja, tässä tapauksessa pelaajat
                 foreach(var plr in osa.players)
                 {
+
+
+
                     // Suodata pelaajien nimestä turha sälä
-                    plr.name = plr.name
-                        .Replace("&lt;", "")
+                    plr.name = plr.name.Replace("&lt;", "")     // Tämän tilalle voisi tällätä oman aliohjelmansa van ei se halunna toimia vielä..
                         .Replace("/font&gt;", "")
                         .Replace("font color*&gt;", "")
                         .Replace("font color=\"#FFFFFF\"&gt;", "")
@@ -76,5 +78,36 @@ namespace Serverilista
                 }
             }
         }
+        /* public static string Name(string name)
+         {
+             string placeholder = name;
+             placeholder.Replace("&lt;", "")
+                         .Replace("/font&gt;", "")
+                         .Replace("font color*&gt;", "")
+                         .Replace("font color=\"#FFFFFF\"&gt;", "")
+                         .Replace("font color=\"#000000\"&gt;", "")
+                         .Replace("font color=\"#FF0000\"&gt;", "")
+                         .Replace("font color=\"#00FF00\"&gt;", "")
+                         .Replace("font color=\"#0000FF\"&gt;", "")
+                         .Replace("font color=\"#FF00FF\"&gt;", "")
+                         .Replace("font color=\"#FFFF00\"&gt;", "")
+                         .Replace("font color=\"#00FFFF\"&gt;", "");
+
+             if (placeholder.Length < 7)
+             {
+                 System.Text.StringBuilder pName = new System.Text.StringBuilder();
+                 pName.Append(placeholder);
+                 pName.Append("\t\t");
+                 placeholder = pName.ToString();
+             }
+             else if (placeholder.Length < 14)
+             {
+                 System.Text.StringBuilder pName = new System.Text.StringBuilder();
+                 pName.Append(placeholder);
+                 pName.Append("\t");
+                 placeholder = pName.ToString();
+             }
+             return placeholder;
+         }*/
     }
 }
