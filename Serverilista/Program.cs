@@ -9,11 +9,15 @@ namespace Serverilista
     class Program
     {
         readonly HttpClient client = new HttpClient();
+
+
         static async Task Main(string[] args)
         {
             Program program = new Program();
             await program.HaeSivu();
         }
+
+
         private async Task HaeSivu()
         {
             // Hae JSON - vastaus sivulta ja tulosta koko mälli
@@ -42,12 +46,9 @@ namespace Serverilista
                 Console.WriteLine($"\n{osa.hostname}:\nModi: {osa.gametype}\t\tKartta: {osa.map}\n" +
                     $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\t\t\tBotteja: {osa.bots}");
                 
-                // Tulosta json syvemmän nestauksen tietoja, tässä tapauksessa pelaajat
+                // Hae läpi tietueen pelaajat
                 foreach(var plr in osa.players)
                 {
-
-
-
                     // Suodata pelaajien nimestä turha sälä
                     plr.name = plr.name.Replace("&lt;", "")     // Tämän tilalle voisi tällätä oman aliohjelmansa van ei se halunna toimia vielä..
                         .Replace("/font&gt;", "")
@@ -76,16 +77,18 @@ namespace Serverilista
                         plr.name = pName.ToString();
                     }
 
+                    // Pelaajan tiimin muuttaminen tekstimuotoon
                     string pTeam = "";
                     if (plr.team == 1)
-                        pTeam = "PLAYERS";
+                        pTeam = "PELAA";
                     else if (plr.team == 2)
-                        pTeam = "ALPHA";
+                        pTeam = "TIIMI A";
                     else if (plr.team == 3)
-                        pTeam = "BETA";
+                        pTeam = "TIIMI B";
                     else
-                        pTeam = "SPEC";
+                        pTeam = "KATSELEE";
 
+                    // Tulosta pelaajat ja heidän tiedot
                     Console.ResetColor();
                     Console.WriteLine($"Pelaaja: {plr.name}\tLatenssi: {plr.ping}\t\t{pTeam}");
                 }
