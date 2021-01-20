@@ -34,8 +34,15 @@ namespace Serverilista
                 }
                 // Tulosta jokaisesta serveristä haluttavat tiedot
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"\n{osa.hostname}:\nModi: {osa.gametype}\nKartta: {osa.map}\n" +
-                    $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\nBotteja: {osa.bots}\n");
+                if (osa.gametype.Length < 7)
+                {
+                    System.Text.StringBuilder pName = new System.Text.StringBuilder();
+                    pName.Append(osa.gametype);
+                    pName.Append("\t");
+                    osa.gametype = pName.ToString();
+                }
+                Console.WriteLine($"\n{osa.hostname}:\nModi: {osa.gametype}\t\tKartta: {osa.map}\n" +
+                    $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\t\t\tBotteja: {osa.bots}\n");
                 
                 // Tulosta json syvemmän nestauksen tietoja, tässä tapauksessa pelaajat
                 foreach(var plr in osa.players)
