@@ -10,7 +10,6 @@ namespace Serverilista
         public string map { get; set; }
         public int numplayers { get; set; }
         public int maxplayers { get; set; }
-        public int numspectators { get; set; }
         public int bots { get; set; }
         public List<Players> players { get; set; }
     }

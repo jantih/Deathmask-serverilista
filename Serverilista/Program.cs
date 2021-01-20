@@ -69,7 +69,7 @@ namespace Serverilista
                         pName.Append("\t\t");
                         plr.name = pName.ToString();
                     }
-                    else if (plr.name.Length <= 14)
+                    else if (plr.name.Length <= 15)
                     {
                         System.Text.StringBuilder pName = new System.Text.StringBuilder();
                         pName.Append(plr.name);
@@ -80,7 +80,7 @@ namespace Serverilista
                     // Pelaajan tiimin muuttaminen tekstimuotoon
                     string pTeam = "";
                     if (plr.team == 1)
-                        pTeam = "PELAA";
+                        pTeam = "NEUTRAALI";
                     else if (plr.team == 2)
                         pTeam = "TIIMI A";
                     else if (plr.team == 3)
