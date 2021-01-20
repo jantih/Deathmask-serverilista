@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -52,10 +54,25 @@ namespace Serverilista
                         .Replace("font color=\"#FFFF00\"&gt;", "")
                         .Replace("font color=\"#00FFFF\"&gt;", "");
 
+                    if (plr.name.Length < 7)
+                    {
+                        System.Text.StringBuilder pName = new System.Text.StringBuilder();
+                        pName.Append(plr.name);
+                        pName.Append("\t\t");
+                        plr.name = pName.ToString();
+                    }
+                    else if (plr.name.Length < 14)
+                    {
+                        System.Text.StringBuilder pName = new System.Text.StringBuilder();
+                        pName.Append(plr.name);
+                        pName.Append("\t");
+                        plr.name = pName.ToString();
+                    }
+
                     Console.ResetColor();
                     /*Console.WriteLine($"Pelaajan nimi: {plr.name}\nPisteet: {plr.score}\nTiimi: {plr.team}\n" +
                         $"Latenssi: {plr.ping}\n");*/
-                    Console.WriteLine($"Pelaajan nimi: {plr.name}\nLatenssi: {plr.ping}");
+                    Console.WriteLine($"Pelaaja: {plr.name}\tLatenssi: {plr.ping}");
                 }
             }
         }

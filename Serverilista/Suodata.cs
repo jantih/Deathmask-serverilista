@@ -14,6 +14,7 @@ namespace Serverilista
         public int bots { get; set; }
         public List<Players> players { get; set; }
     }
+    // Alemman tason tietueen hakeminen
     public class Players 
     {
         public string name { get; set; }
