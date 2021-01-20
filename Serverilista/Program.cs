@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -33,7 +31,7 @@ namespace Serverilista
                     continue;
                 }
                 // Tulosta jokaisesta serveristä haluttavat tiedot
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (osa.gametype.Length < 7)
                 {
                     System.Text.StringBuilder pName = new System.Text.StringBuilder();
@@ -42,7 +40,7 @@ namespace Serverilista
                     osa.gametype = pName.ToString();
                 }
                 Console.WriteLine($"\n{osa.hostname}:\nModi: {osa.gametype}\t\tKartta: {osa.map}\n" +
-                    $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\t\t\tBotteja: {osa.bots}\n");
+                    $"Pelaajia: {osa.numplayers}/{osa.maxplayers}\t\t\tBotteja: {osa.bots}");
                 
                 // Tulosta json syvemmän nestauksen tietoja, tässä tapauksessa pelaajat
                 foreach(var plr in osa.players)
@@ -70,7 +68,7 @@ namespace Serverilista
                         pName.Append("\t\t");
                         plr.name = pName.ToString();
                     }
-                    else if (plr.name.Length < 14)
+                    else if (plr.name.Length <= 14)
                     {
                         System.Text.StringBuilder pName = new System.Text.StringBuilder();
                         pName.Append(plr.name);
@@ -78,11 +76,20 @@ namespace Serverilista
                         plr.name = pName.ToString();
                     }
 
+                    string pTeam = "";
+                    if (plr.team == 1)
+                        pTeam = "PLAYERS";
+                    else if (plr.team == 2)
+                        pTeam = "ALPHA";
+                    else if (plr.team == 3)
+                        pTeam = "BETA";
+                    else
+                        pTeam = "SPEC";
+
                     Console.ResetColor();
-                    /*Console.WriteLine($"Pelaajan nimi: {plr.name}\nPisteet: {plr.score}\nTiimi: {plr.team}\n" +
-                        $"Latenssi: {plr.ping}\n");*/
-                    Console.WriteLine($"Pelaaja: {plr.name}\tLatenssi: {plr.ping}");
+                    Console.WriteLine($"Pelaaja: {plr.name}\tLatenssi: {plr.ping}\t\t{pTeam}");
                 }
+                Console.WriteLine("");
             }
         }
         /* public static string Name(string name)
