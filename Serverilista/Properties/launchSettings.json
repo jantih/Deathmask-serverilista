@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Serverilista": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\jtihu\\source\\repos\\jantih\\Deathmask-serverilista"
+    },
+    "WSL 2": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}
